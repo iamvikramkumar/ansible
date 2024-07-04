@@ -138,6 +138,11 @@ SO, we will set the connection type as local and we will also set host as local
       - { image: "ami id", name: "manage-node-3" }
 ```
 
+
+
+![Screenshot (747)](https://github.com/iamvikramkumar/ansible_project/assets/89016145/ec102ba7-32a1-472f-8c0a-899e72de4712)
+
+
 ## Task 2
 Set up passwordless authentication between Ansible control node and newly created instances.
 
@@ -181,3 +186,20 @@ And if you created your folder without vault then you can execute same cmd witho
 ```
 ansible-playbook -i inventory.ini ec2_stop.yaml
 ```
+
+![Screenshot (748)](https://github.com/iamvikramkumar/ansible_project/assets/89016145/f8fc11f6-e887-4664-b78e-da77895256da)
+
+## Credits
+
+Special thanks to [Abhishek Veeramalla](https://www.youtube.com/playlist?list=PLdpzxOOAlwvLxd5nmtmORCmhD5jkrNbuE) for the helpful resources and tutorials.
+
+### Thanks For Watch This Repositories!
+
+### <img src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="30"><i>KEEP AWESOME & STAY COOL!</i><img src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="30">
+
+### Feel Free To Fork And Report If You Find Any Issue :)
+
+![Star Badge](https://img.shields.io/static/v1?label=%F0%9F%8C%9F&message=If%20Useful&style=style=flat&color=BC4E99)
+[![View Repositories](https://img.shields.io/badge/View-My_Repositories-blue?logo=GitHub)](https://github.com/iamvikramkumar?tab=repositories)
+[![View My Profile](https://img.shields.io/badge/View-My_Profile-green?logo=GitHub)](https://github.com/iamvikramkumar)
+</div>
