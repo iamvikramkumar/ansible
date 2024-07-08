@@ -6,6 +6,11 @@
 -  It's a command-line IT automation software application written in Python.
 -  Ansible's main strengths are simplicity and ease of use.
 
+  
+![1719586004263](https://github.com/iamvikramkumar/ansible/assets/89016145/3d5223fa-4c19-419b-abb0-b14efe182d08)
+
+
+  
 # Ansible's primary features:
 
 - Agentless architecture: Ansible doesn't require any agents or additional software to be installed on the nodes it manages.
