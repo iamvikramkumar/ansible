@@ -1,0 +1,82 @@
+
+---
+- hosts: all
+  become: true
+
+  tasks:
+    # - name: Enable universe repository
+    #   ansible.builtin.command: add-apt-repository universe
+    #   register: universe_result
+    #   changed_when: "'universe' in universe_result.stdout"
+
+    - name: Update apt cache
+      ansible.builtin.apt:
+        update_cache: yes
+
+    - name: Install security updates
+      ansible.builtin.apt:
+        name: "{{ item }}"
+        state: latest
+      loop:
+        - openssl
+        - openssh
+      ignore_errors: yes 
+    - name: Check if docker is installed
+      ansible.builtin.command: docker --version
+      register: output
+      ignore_errors: yes    
+    - ansible.builtin.debug:
+        var: output
+    - name: Install docker
+      ansible.builtin.apt:
+        name: docker.io
+        state: present
+      when: output.failed
+        
+
+# ---
+# - hosts: all
+#   become: true
+
+#   tasks:
+#     - name: Check if a file exists in temp and fail task if it does
+#       ansible.builtin.command: ls /tmp/this_should_not_be_here
+#       register: result
+#       failed_when:
+#         - result.rc == 0
+#         - '"No such" not in result.stdout'
+
+#         # in this code we check that "/tmp/this_should_not_be_here" this directory is available or not if it is available then if failed otherwise it show changed output
+
+
+
+
+
+# ---
+# - hosts: all
+#   become: true
+#   #gather_facts: false  # it will not execute gather_facts
+  
+#   tasks:
+#     - name: Make sure thr packages and openssl are up to date
+#       ansible.builtin.apt:
+#        name: "{{ item }}"
+#        state: latest
+#       loop:
+#        - openssh
+#        - openssl
+#       ignore_errors: yes
+
+#     - name: Verify if Docker is installed
+#       ansible.builtin.command: docker --version
+#       register: output        # we store the output  of docker --version using this syntax
+#       ignore_errors: yes
+
+#     # - ansible.builtin.debug:  #whenever you want to print a variable
+#     #      var : output    
+
+#     - name: Install Docker
+#       ansible.builtin.apt:
+#         name: docker.io
+#         state: present
+#       when : output.failed
