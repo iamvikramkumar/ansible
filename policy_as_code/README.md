@@ -131,8 +131,38 @@ We will not use Vault in policy as code because it will directly use AWS configu
     ansible-vault create group_vars/all/pass.yml --vault-password-file vault.pass
     ```
 
+## Create Playbook File
+I want to implement policy as code on all the S3 buckets.
+
+## Step 1
+List all the S3 buckets and store them in an ARRAY.
+
+## Step 2
+Write a LOOP on the Array that we have created in Step 1.
+I will take each item from the loop and on each item I will enable versioning.
+
+## ANSIBLE AWS DOCUMENTATION
+https://docs.ansible.com/ansible/latest/collections/amazon/aws/index.html
+
+## Here is the final playbook for implementing policy as code (PAC), named S3_versioning.yaml:
+
+```
+---
+- name: Enforce s3 bucket versioning on AWS account
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: List S3 buckets in AWS account
+      amazon.aws.s3_bucket_info:
+      register: result
     
+    - debug:
+        var: result
+    
+    - name: Enable versioning on S3 bucket
+      amazon.aws.s3_bucket:
+        name: "{{ item.name }}"
+        versioning: yes
+      loop: "{{ result.buckets }}" 
 
-
-
-
+```
