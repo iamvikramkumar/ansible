@@ -54,9 +54,6 @@ Continuously monitor and enforce compliance across the organization.
 
 
 # POLICY - AS - CODE
-
-# Install and Setup Ansible for Implementing Policy as Code on AWS
-
 # Create S3 Bucket
 
 ## Create access key (I AM USER)
@@ -89,7 +86,52 @@ You got a requirement from your management that as a DevOps engineering team, yo
 - SSH to your EC2 instances.
 - Install the module specified in the playbook.
 - Execute that module on the EC2 instance.
-That's why password-less authentication is required for talking to VMs or servers.
+- That's why password-less authentication is required for talking to VMs or servers.
+
+
+## Write Ansible Playbook
+## Prerequisites
+- Install Python
+- Install Boto3
+- Install Collection
+- But why?
+
+You provide an Ansible playbook with your AWS credentials. To make an API call with those credentials, Ansible will use a `Python module` called `boto3`.
+
+# Install and Setup Ansible for Implementing Policy as Code on AWS
+## Install boto3
+
+```
+pip install boto3
+```
+
+## Install AWS Collection
+
+```
+ansible-galaxy collection install amazon.aws
+```
+
+## Why we need to install AWS Collection ?
+- This is required because by default, when you are using Ansible, the installation will have all the inbuilt Ansible modules.
+- However, if you want to use modules related to AWS, Azure, Cisco, F5, and Palo Alto.
+- You need to install their collections.
+
+
+
+# Setup Vault
+We will not use Vault in policy as code because it will directly use AWS configure. Therefore, we do not set up the Vault. If you want to use Vault, you can.
+
+1. Create a password for vault:
+    ```sh
+    openssl rand -base64 2048 > vault.pass
+    ```
+
+2. Add your AWS credentials using the below vault command:
+    ```sh
+    ansible-vault create group_vars/all/pass.yml --vault-password-file vault.pass
+    ```
+
+    
 
 
 
