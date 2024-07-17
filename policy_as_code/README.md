@@ -70,6 +70,26 @@ aws configure
 aws s3 ls
 ```
 
+If the above command shows the list of S3 buckets which you created in AWS, then it means your AWS account is configured.
+
+Go to the S3 bucket and click on the created S3 bucket, then go to `Properties`.
+You will see that `Bucket Versioning` is `disabled`.
+
+## Requirement
+You got a requirement from your management that as a DevOps engineering team, you need to implement policy as code for all the S3 Buckets.
+
+## What will you do?
+- As a DevOps engineer, you will write an Ansible playbook.
+- In this case, password-less authentication is not required for Ansible.
+- Password-less authentication is only required if your Ansible playbook is talking to virtual machines or servers.
+- When Ansible is talking to AWS or network appliances or any resources other than servers, you don’t need to implement password-less authentication.
+- The Ansible playbook you write will interact with the AWS API (specifically the S3 API) to implement policies on S3.
+
+## If your Ansible playbook was talking to a virtual machine or a server, it would:
+- SSH to your EC2 instances.
+- Install the module specified in the playbook.
+- Execute that module on the EC2 instance.
+That's why password-less authentication is required for talking to VMs or servers.
 
 
 
