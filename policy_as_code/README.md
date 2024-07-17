@@ -51,3 +51,26 @@ Prevent deployment of applications with known vulnerabilities.
 ### Compliance and Governance:
 Implement regulatory compliance requirements (e.g., GDPR, HIPAA) as code.
 Continuously monitor and enforce compliance across the organization.
+
+
+# POLICY - AS - CODE
+
+# Install and Setup Ansible for Implementing Policy as Code on AWS
+
+# Create S3 Bucket
+
+## Create access key (I AM USER)
+
+Configure AWS access and secret key with your ansible control machine where ansible is running 
+```
+aws configure
+```
+## Check S3 bucket:
+```
+aws s3 ls
+```
+
+
+
+
+
