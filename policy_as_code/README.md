@@ -1,59 +1,7 @@
-# Policy as Code
-
+# POLICY - AS - CODE
 Policy as Code (PaC) in DevSecOps refers to the practice of defining and managing security policies through code. This approach enables automated, consistent, and scalable enforcement of security controls and compliance requirements across the software development lifecycle. 
 
-## Key Concepts of Policy as Code
 
-### Codification of Policies
-Security policies, compliance requirements, and governance rules are written in code, similar to how infrastructure is defined in Infrastructure as Code (IaC).
-Policies are typically defined using declarative languages or scripts.
-
-### Automation
-Policies are automatically enforced through CI/CD pipelines.
-Tools continuously monitor and ensure compliance with the defined policies.
-
-### Version Control
-Policies as code are stored in version control systems (e.g., Git), allowing for versioning, auditing, and change tracking.
-This ensures that any changes to policies are transparent and traceable.
-
-### Integration with DevOps Tools
-PaC integrates with DevOps tools and platforms, enabling seamless policy enforcement across development, testing, and production environments.
-Common integrations include CI/CD tools, configuration management tools, and cloud management platforms.
-
-## Benefits of Policy as Code
-
-### Consistency and Accuracy
-Policies are applied consistently across environments, reducing the risk of human error.
-Automated checks and enforcement ensure that policies are adhered to accurately.
-
-### Scalability
-PaC enables scalable policy enforcement across multiple environments and numerous resources.
-It supports the rapid deployment and scaling of applications while maintaining compliance.
-
-### Auditability and Transparency
-Policies as code provide an auditable trail of policy definitions and changes.
-This transparency is crucial for compliance and regulatory requirements.
-
-### Shift-Left Security
-By integrating security policies early in the development process, PaC promotes the shift-left security approach.
-It helps identify and remediate security issues early, reducing the cost and impact of security vulnerabilities.
-
-## Example Use Cases
-
-### Infrastructure Security:
-Ensure that cloud resources (e.g., AWS S3 buckets, IAM roles) comply with security best practices.
-Automatically remediate non-compliant resources.
-
-### Application Security:
-Enforce secure coding practices and compliance checks during the build and deployment stages.
-Prevent deployment of applications with known vulnerabilities.
-
-### Compliance and Governance:
-Implement regulatory compliance requirements (e.g., GDPR, HIPAA) as code.
-Continuously monitor and enforce compliance across the organization.
-
-
-# POLICY - AS - CODE
 # Create S3 Bucket
 
 ## Create access key (I AM USER)
@@ -131,7 +79,7 @@ We will not use Vault in policy as code because it will directly use AWS configu
     ansible-vault create group_vars/all/pass.yml --vault-password-file vault.pass
     ```
 
-## Create Playbook File
+# Create Playbook File
 I want to implement policy as code on all the S3 buckets.
 
 ## Step 1
@@ -144,7 +92,7 @@ I will take each item from the loop and on each item I will enable versioning.
 ## ANSIBLE AWS DOCUMENTATION
 https://docs.ansible.com/ansible/latest/collections/amazon/aws/index.html
 
-## Here is the final playbook for implementing policy as code (PAC), named S3_versioning.yaml:
+## Here is the final playbook for implementing policy as code (PAC), named `S3_versioning.yaml`:
 
 ```
 ---
@@ -166,6 +114,59 @@ https://docs.ansible.com/ansible/latest/collections/amazon/aws/index.html
       loop: "{{ result.buckets }}" 
 
 ```
+
+
+
+## Key Concepts of Policy as Code
+
+### Codification of Policies
+Security policies, compliance requirements, and governance rules are written in code, similar to how infrastructure is defined in Infrastructure as Code (IaC).
+Policies are typically defined using declarative languages or scripts.
+
+### Automation
+Policies are automatically enforced through CI/CD pipelines.
+Tools continuously monitor and ensure compliance with the defined policies.
+
+### Version Control
+Policies as code are stored in version control systems (e.g., Git), allowing for versioning, auditing, and change tracking.
+This ensures that any changes to policies are transparent and traceable.
+
+### Integration with DevOps Tools
+PaC integrates with DevOps tools and platforms, enabling seamless policy enforcement across development, testing, and production environments.
+Common integrations include CI/CD tools, configuration management tools, and cloud management platforms.
+
+## Benefits of Policy as Code
+
+### Consistency and Accuracy
+Policies are applied consistently across environments, reducing the risk of human error.
+Automated checks and enforcement ensure that policies are adhered to accurately.
+
+### Scalability
+PaC enables scalable policy enforcement across multiple environments and numerous resources.
+It supports the rapid deployment and scaling of applications while maintaining compliance.
+
+### Auditability and Transparency
+Policies as code provide an auditable trail of policy definitions and changes.
+This transparency is crucial for compliance and regulatory requirements.
+
+### Shift-Left Security
+By integrating security policies early in the development process, PaC promotes the shift-left security approach.
+It helps identify and remediate security issues early, reducing the cost and impact of security vulnerabilities.
+
+## Example Use Cases
+
+### Infrastructure Security:
+Ensure that cloud resources (e.g., AWS S3 buckets, IAM roles) comply with security best practices.
+Automatically remediate non-compliant resources.
+
+### Application Security:
+Enforce secure coding practices and compliance checks during the build and deployment stages.
+Prevent deployment of applications with known vulnerabilities.
+
+### Compliance and Governance:
+Implement regulatory compliance requirements (e.g., GDPR, HIPAA) as code.
+Continuously monitor and enforce compliance across the organization.
+
 
 
 ## Credits
